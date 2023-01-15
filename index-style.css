@@ -91,7 +91,6 @@ form .input-field {
 }
 
 .field .error {
-    display: flex;
     align-items: center;
     margin-top: 6px;
     color: #d93025;
