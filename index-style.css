@@ -193,6 +193,10 @@ nav a {
     margin-left: 30px;
 }
 
-footer p {
-    align-items: bottom;
+nav p {
+    font-size: 10px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    color: #044BD9;
 }
