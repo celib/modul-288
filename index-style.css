@@ -1,0 +1,194 @@
+/* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,500;0,800;1,100&family=Poppins:wght@100;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("img/back.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.custom-hr {
+    content: "";
+    display: block;
+    border-color: 1px solid #fcfafa;
+    margin: 10px auto;
+    width: 96%;
+}
+
+
+h5 {
+    margin-top: 3%;
+    font-size: small;
+    font-weight: 500;
+    color: #919191;
+}
+
+.container {
+    position: relative;
+    max-width: 370px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 30px;
+    background-color: #fff;
+}
+
+.container header {
+    font-size: 30px;
+    font-weight: 800;
+    color: #333;
+}
+
+.container form {
+    margin-top: 30px;
+}
+
+form .field {
+    margin-bottom: 20px;
+}
+
+form .input-field {
+    position: relative;
+    height: 55px;
+    width: 100%;
+}
+
+.input-field input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    padding: 0 15px;
+    padding-bottom: 0 10px;
+    border: 1px solid #d1d1d1;
+}
+
+.invalid input {
+    border-color: #d93025;
+}
+
+.input-field .show-hide {
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #919191;
+    cursor: pointer;
+    padding: 3px;
+}
+
+.field .error {
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+    color: #d93025;
+    font-size: 13px;
+    display: none;
+}
+
+.invalid .error {
+    display: flex;
+}
+
+.error .error-icon {
+    margin-right: 6px;
+    font-size: 15px;
+}
+
+.create-password .error {
+    align-items: flex-start;
+}
+
+.create-password .error-icon {
+    margin-top: 4px;
+}
+
+.button {
+    margin: 25px 0 6px;
+}
+
+.button input {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #044BD9;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button input:hover {
+    background-color: #0476D9;
+}
+
+.password-strength-bar-container {
+    display: flex;
+}
+
+.password-strength-bar {
+    transition: color 0.5s ease;
+    width: 95%;
+    margin: auto;
+    padding-top: 20px;
+    margin-top: 10px;
+}
+
+.password-strength-bar::-webkit-progress-value {
+    background-color: #d93089;
+}
+
+.password-strength-bar::-moz-progress-bar {
+    background-color: #d93089;
+}
+
+.captcha-characters {
+    color: red;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+.captcha-charaters {
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+
+p {
+    padding-top: 10px;
+}
+
+nav {
+    background-color: rgba(255, 255, 255, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    display: flex;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+nav a {
+    font-size: 18px;
+    font-weight: 800;
+    text-decoration: none;
+    color: #044BD9;
+    margin-left: 30px;
+}
