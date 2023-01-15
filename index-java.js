@@ -126,11 +126,9 @@ form.addEventListener("submit", (event) => {
     localStorage.setItem("loginData", JSON.stringify(loginData));
 });
 
-// Wandle das Logindaten-Objekt in einen JSON-String um
-const loginDataJSON = JSON.stringify(loginData);
 
-// Speichere den JSON-String im lokalen Speicher des Browsers
-localStorage.setItem("loginData", loginDataJSON);
+
+
 
 // Check password strength and update progress bar
 function updatePasswordStrength() {
