@@ -192,3 +192,7 @@ nav a {
     color: #044BD9;
     margin-left: 30px;
 }
+
+footer p {
+    align-items: bottom;
+}
