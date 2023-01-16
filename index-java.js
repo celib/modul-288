@@ -58,28 +58,36 @@ function confirmPass() {
 }
 
 
-const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-let captcha = "";
-for (let i = 0; i < 4; i++) {
-    captcha += characters.charAt(Math.floor(Math.random() * characters.length));
-}
-document.querySelector(".captcha-charaters").textContent += captcha;
-
+const captcha = {
+    characters: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+    generate: function () {
+        let captchaString = "";
+        for (let i = 0; i < 4; i++) {
+            captchaString += this.characters.charAt(Math.floor(Math.random() * this.characters.length));
+        }
+        return captchaString;
+    },
+    display: function () {
+        document.querySelector("#generated-captcha").textContent = this.generate();
+    }
+};
+captcha.display();
 const captchaInput = document.querySelector(".captcha");
 const captchaError = document.querySelector(".captcha-error");
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
-    if (captchaInput.value !== captcha) {
+    if (captchaInput.value !== document.querySelector("#generated-captcha").textContent) {
         captchaError.style.display = "block";
     } else {
         captchaError.style.display = "none";
     }
 });
 
+document.getElementById("submitBtn").addEventListener("click", captcha.display);
 
 function checkCaptcha() {
-    if (captchaInput.value !== captcha) {
+    if (captchaInput.value !== document.querySelector("#generated-captcha").textContent) {
         return captchaError.classList.add("invalid");
     }
     captchaError.classList.remove("invalid");
@@ -131,34 +139,46 @@ form.addEventListener("submit", (event) => {
 
 
 // Check password strength and update progress bar
-function updatePasswordStrength() {
-    const password = passInput.value;
-    let strength = 0;
 
-    // Check password length
-    if (password.length >= 8) {
-        strength += 25;
+const passwordChecker = {
+    passInput: null,
+    form: null,
+    strength: 0,
+
+    init: function (passInput, form) {
+        this.passInput = passInput;
+        this.form = form;
+        this.passInput.addEventListener("keyup", this.updatePasswordStrength.bind(this));
+    },
+
+    updatePasswordStrength: function () {
+        const password = this.passInput.value;
+        this.strength = 0;
+
+        // Check password length
+        if (password.length >= 8) {
+            this.strength += 25;
+        }
+
+        // Check for uppercase letters
+        if (/[A-Z]/.test(password)) {
+            this.strength += 25;
+        }
+
+        // Check for lowercase letters
+        if (/[a-z]/.test(password)) {
+            this.strength += 25;
+        }
+
+        // Check for numbers
+        if (/[0-9]/.test(password)) {
+            this.strength += 25;
+        }
+
+        // Update progress bar value
+        const passwordStrengthBar = this.form.querySelector(".password-strength-bar");
+        passwordStrengthBar.value = this.strength;
     }
+};
 
-    // Check for uppercase letters
-    if (/[A-Z]/.test(password)) {
-        strength += 25;
-    }
-
-    // Check for lowercase letters
-    if (/[a-z]/.test(password)) {
-        strength += 25;
-    }
-
-    // Check for numbers
-    if (/[0-9]/.test(password)) {
-        strength += 25;
-    }
-
-    // Update progress bar value
-    const passwordStrengthBar = form.querySelector(".password-strength-bar");
-    passwordStrengthBar.value = strength;
-}
-
-// Update password strength when password is typed
-passInput.addEventListener("keyup", updatePasswordStrength);
+passwordChecker.init(passInput, form);
